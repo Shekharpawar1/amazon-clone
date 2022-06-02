@@ -7,20 +7,6 @@ function App() {
     // header
     // homepageasdfasdfa
 
-    asdfasdfadsfasdf
-    SharedArrayBuffersdfa
-    sendFileasd
-    falsedfa
-    dsf
-    addEventListenerfa
-    sendFileasdasd
-    falsesf
-    asdfasdfadsfasdffa
-    ReadableStreamDefaultReaderfa
-    defaultConfigurationfa
-    df
-    asd
-    f
   );
 }
 
