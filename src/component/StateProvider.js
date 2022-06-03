@@ -1,15 +1,37 @@
 import React from 'react'
-import { createContext,useContext,useReducer } from 'react'
+import { useState } from 'react'
+import { createContext } from 'react'
 
 
-//preparing the data layer
-export const StateContext=createContext();
 
-//wrap over app for the availability of the data
-export const StateProvider=({reducer,intitalState,children})=>{
-  <StateContext.Provider value={useReducer(reducer,intitalState)}>
-    {children}
-  </StateContext.Provider>
+
+export const StateContext=createContext()
+
+
+//selector
+export const getBasketTotal=(item)=>{
+  item?.reduce((amount,item)=>{ return item.price+ amount,0})
 
 }
 
+export const StateProvider=({children})=>{
+  const [item,setItem]=useState([])
+
+  const addToBasket=(title,price,image,rating)=>{
+    setItem((prevState)=>{
+      return [... prevState,{title,price,image,rating}]
+    
+    })
+    
+  }
+
+  return (
+    <StateContext.Provider value={{item,addToBasket,getBasketTotal}}>
+      {children}
+    </StateContext.Provider>
+  )
+}
+
+
+
+//pull information from the data layer

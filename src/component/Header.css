@@ -66,3 +66,9 @@
 .header__basketCount{
     margin: 0 10px;
 }
+.header>NavLink,.header__nav>NavLink{
+    text-decoration: none;
+}
+.header__nav>NavLink>div{
+    text-decoration: none;
+}
