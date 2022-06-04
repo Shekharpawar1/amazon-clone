@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import {auth} from "./component/Firebase"
 import { useContext } from "react";
 import Payment from "./component/Payment";
+import Success from "./component/Success";
 
 
 
@@ -47,6 +48,7 @@ function App() {
            <Route exact path="/signIn" element={<SignIn/>}/>
 
           <Route exact path="/payment" element={<Payment/>}/>
+          <Route exact path="/success" element={<Success/>}/>
         </Routes>
    
         </div> 
