@@ -1,21 +1,36 @@
 import React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate,NavLink}from 'react-router-dom';
 import "./SignIn.css"
+import { auth } from "./Firebase"
+
+
 
 function SignIn() {
+    //allow use to change the pageor the url
+    const history=useNavigate();
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
 
     const signIn=(e)=>{
         e.preventDefault();
-
+ 
         //firebase stuff
+        auth.signInWithEmailAndPassword(email,password).then(auth=>{history("/")}).catch(error=>alert(error.message))
+
 
     }
     const signUp=(e)=>{
         e.preventDefault();
         //do some fancy firebase register
+        auth.createUserWithEmailAndPassword(email,password).then((auth)=>{
+            //this would return success auth 
+              console.log(auth)
+              if(auth){
+                  history("/")
+              }
+          }).catch((error)=>{alert(error.message)})
+
     }
   return (
     <div className='signIn'>

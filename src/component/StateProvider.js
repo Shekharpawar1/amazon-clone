@@ -16,17 +16,25 @@ export const getBasketTotal=(item)=>{
 
 export const StateProvider=({children})=>{
   const [item,setItem]=useState([])
+  const [user,setUser]=useState([""])
 
-  const addToBasket=(title,price,image,rating)=>{
+  const addToBasket=(id,title,price,image,rating)=>{
     setItem((prevState)=>{
-      return [... prevState,{title,price,image,rating}]
+      return [... prevState,{id:id,title:title,price:price,image:image,rating:rating}]
     
     })
+
     
+  }
+  
+  const addUser=(user)=>{
+    setUser(prev=>{
+      return [...prev,user]
+    })
   }
 
   return (
-    <StateContext.Provider value={{item,addToBasket,getBasketTotal}}>
+    <StateContext.Provider value={{item,user,setItem, addUser,addToBasket,getBasketTotal}}>
       {children}
     </StateContext.Provider>
   )
